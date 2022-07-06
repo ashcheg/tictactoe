@@ -1,4 +1,23 @@
-gameBoard = ['O', 'O', 'X', 'O', 'O', 'X', 'O', 'O', 'X']
+
+
+const Gameboard = (() => {
+    gameBoard = ['O', 'O', 'X', 'O', 'O', 'X', 'O', 'O', 'X'];
+
+    // render gameboard on screen
+    function render() {
+        gameBoardDiv = document.getElementById("game-board");
+        for (i=0;i<gameBoard.length;i++) {
+            let sign = gameBoard[i];
+            let div = document.createElement("div");
+            div.id = `cell${i}`
+            div.innerHTML = sign;
+            gameBoardDiv.appendChild(div);
+        }
+    }
+    return {
+        render: render()
+    }
+})();
 
 // Overall Game object - module
 /* 
@@ -24,15 +43,5 @@ addMark()
 */
 
 
-// render gameboard on screen
-function render(gameBoard) {
-    gameBoardDiv = document.getElementById("game-board");
-    for (i=0;i<gameBoard.length;i++) {
-        let sign = gameBoard[i];
-        let div = document.createElement("div");
-        div.innerHTML = sign;
-        gameBoardDiv.appendChild(div);
-    }
-}
 
-render(gameBoard);
+
