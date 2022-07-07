@@ -1,17 +1,41 @@
 // Game controler module
-const displayController = ({
+// const displayController = ({
 
-    return {
-        // need to write functions
-        score: checkScore(),
-        resetGame: resetGame(),
-        choosePlayer: choosePlayer()
-    }
-})();
+//     return: {
+//         // need to write functions
+//         score: checkScore(),
+//         resetGame: resetGame(),
+//         choosePlayer: choosePlayer()
+//     }
+// })();
+
+
+
+// All event listeners. Need to atach to elements
+// restartBtn.addEventListener("click", displayController.restartGame);
+// signBtn.addEventListener("click", displayController.choosePlayer);
+
 
 // Gameboard module
 const Gameboard = (() => {
     gameBoard = ['', '', '', '', '', '', '', '', ''];
+
+    // elements
+    // Choosign player sign
+    // const signBtn = document.getElementsByClassName("player-sign");
+    // const restartBtn = document.getElementById("restart");
+       
+    blah = "cell1"
+    
+
+    // function to add amrk on the Gameboard
+    function addMark(blah) {
+        console.log(blah);
+        const cellID = blah;
+        const cell= document.getElementById(`${cellID}`);
+        
+        cell.innerHTML = 'X';
+    }
 
     // render gameboard on screen
     function render() {
@@ -28,15 +52,17 @@ const Gameboard = (() => {
     return {
         render: render(),
         // need to write functions
-        addMark: addMark()
+        addMark: addMark(blah)
     }
 })();
 
 
-// All event listeners. Need to atach to elements
-document.addEventListener("click", displayController.resetGame);
-document.addEventListener("click", displayController.choosePlayer);
-document.addEventListener("click", Gameboard.addMark);
+const cells = document.getElementsByClassName("cell"); 
+for (cell in cells) {
+    cell.addEventListener("click", Gameboard.addMark("cell1"));
+}
+
+
 
 // Overall Game object - module
 /* 
