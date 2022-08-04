@@ -37,24 +37,25 @@ const Gameboard = (() => {
 })();
 
 const displayController = (() => {
-    let playerSign = 'x';
+    let playerSign = "x";
     //player mode switch
     function signSwitch(sign) {
         playerSign = sign;
         console.log(playerSign);
     }
 
-    // const playerButtons = document.querySelectorAll(".player-sign");
-
     // playerButtons.forEach(btn => btn.addEventListener("click", signSwitch(btn.getAttribute("id"))));
 
     const xPlayer = document.getElementById("xPlayer");
-    xPlayer.addEventListener("click", function(event) {
-        signSwitch("x");
-        console.log(event.target.getAttribute('id'));
+    const oPlayer = document.getElementById("oPlayer");
+
+    xPlayer.addEventListener("click", function() {
+        signSwitch("x")
     });
 
-    //const oPlayer = document.getElementById("oPlayer");
+    oPlayer.addEventListener("click", function() {
+        signSwitch("o")
+    });
 
 
     return {
