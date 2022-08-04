@@ -16,24 +16,65 @@ const Gameboard = (() => {
         }
     }
 
-    function addMark(cellID) {
+    function addMark(cellID, sign) {
         cellNumber = cellID.substr((cellID.length-1));
-        gameBoard[cellNumber] = "x";
+        gameBoard[cellNumber] = sign;
         render();
     }
 
     gameBoardDiv.addEventListener("click", function(event){
         if (event.target.innerHTML == "") {
-            addMark(event.target.getAttribute('id'));
+            let cellID = event.target.getAttribute('id');
+            sign = displayController.playerSign;
+            addMark(cellID, sign);
         }
     });
     
-
     return {
         render: render(),
         addMark: addMark
     }
 })();
+
+const displayController = (() => {
+    let playerSign = 'x';
+    //player mode switch
+    function signSwitch(sign) {
+        playerSign = sign;
+        console.log(playerSign);
+    }
+
+    // const playerButtons = document.querySelectorAll(".player-sign");
+
+    // playerButtons.forEach(btn => btn.addEventListener("click", signSwitch(btn.getAttribute("id"))));
+
+    const xPlayer = document.getElementById("xPlayer");
+    xPlayer.addEventListener("click", function(event) {
+        signSwitch("x");
+        console.log(event.target.getAttribute('id'));
+    });
+
+    //const oPlayer = document.getElementById("oPlayer");
+
+
+    return {
+        signSwitch: signSwitch,
+        playerSign: playerSign
+    }
+    //find all buttons
+    //create players
+    
+    //reset game
+    //check for win
+})();
+
+const playerFactory = (playerSign) => {
+    return {
+        playerSign
+    }
+}
+
+
 
 //add event listeners to the board
 
