@@ -6,15 +6,20 @@ body {
 }
 
 #game-board {
-    background-color: antiquewhite;
+    background-color: aqua;
+    padding: 2px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    width: 400px;
-    height: 400px;
-    text-align: center;
-    align-items: center;
+    grid-template-columns: 150px 150px 150px;
+    grid-template-rows: 150px 150px 150px;
+    gap: 1px;
     font-size: 80px;
     margin: auto;
+}
+
+.cell {
+    border: 1px solid aqua;
+    background-color: antiquewhite;
+    color: blue;
 }
 
 button {

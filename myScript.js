@@ -3,17 +3,12 @@
 
 //     return: {
 //         // need to write functions
+//         
 //         score: checkScore(),
 //         resetGame: resetGame(),
-//         choosePlayer: choosePlayer()
+//         addPlayer: addPlayer()
 //     }
 // })();
-
-
-
-// All event listeners. Need to atach to elements
-// restartBtn.addEventListener("click", displayController.restartGame);
-// signBtn.addEventListener("click", displayController.choosePlayer);
 
 
 // Gameboard module
@@ -25,12 +20,10 @@ const Gameboard = (() => {
     // const signBtn = document.getElementsByClassName("player-sign");
     // const restartBtn = document.getElementById("restart");
        
-    blah = "cell1"
     
-
-    // function to add amrk on the Gameboard
-    function addMark(blah) {
-        console.log(blah);
+    // function to add mark on the Gameboard
+    function addMark() {
+        blah = "cell1"
         const cellID = blah;
         const cell= document.getElementById(`${cellID}`);
         
@@ -52,7 +45,7 @@ const Gameboard = (() => {
     return {
         render: render(),
         // need to write functions
-        addMark: addMark(blah)
+        addMark: addMark()
     }
 })();
 
@@ -62,30 +55,21 @@ for (cell in cells) {
     cell.addEventListener("click", Gameboard.addMark("cell1"));
 }
 
-
-
-// Overall Game object - module
-/* 
-    render()
-    resetGame()
-*/
-
-// Gameboard object - module
-/*(function gameBoard() {
-    listen for clicks (player, clickedElement)
-    
-}
-)()
-*/
+// All event listeners. Need to atach to elements
+// restartBtn.addEventListener("click", displayController.restartGame);
+// signBtn.addEventListener("click", displayController.choosePlayer);
 
 // Player object - factory function
-/* 
-display name input
-addMark()
-    check if there is a mark already
-    render()
+// display name input
 
-*/
+const playerFactory = (playerName, signValue) => {
+    return { playerName, signValue }
+}; 
+
+
+function addSign(e) {
+
+}
 
 
 
