@@ -5,6 +5,7 @@ const Gameboard = (() => {
 
     // show Gameboard on the page
     function render() {
+        gameBoardDiv.innerHTML = "";
         for (i=0;i<gameBoard.length;i++) {
             let sign = gameBoard[i];
             let div = document.createElement("div");
@@ -17,7 +18,8 @@ const Gameboard = (() => {
 
     function addMark(cellID) {
         cellNumber = cellID.substr((cellID.length-1));
-        console.log(cellNumber);
+        gameBoard[cellNumber] = "x";
+        render();
     }
 
     gameBoardDiv.addEventListener("click", function(event){
