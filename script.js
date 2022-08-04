@@ -23,12 +23,14 @@ const Gameboard = (() => {
     }
 
     gameBoardDiv.addEventListener("click", function(event){
-        addMark(event.target.getAttribute('id'));
+        if (event.target.innerHTML == "") {
+            addMark(event.target.getAttribute('id'));
+        }
     });
+    
 
     return {
         render: render(),
-        // need to write functions
         addMark: addMark
     }
 })();
@@ -36,15 +38,5 @@ const Gameboard = (() => {
 //add event listeners to the board
 
 /*
-let gameboard = document.getElementById("game-board");
-gameboard.addEventListener("click", function(event){
-    console.log(event.target.getAttribute('id'));
-});
 
-let cells = document.querySelectorAll('.cell');
-cells.forEach(item => {
-    item.addEventListener('click', console.log('hi'))
-});
 */
-
-//Gameboard.addMark(item.getAttribute('id'))
