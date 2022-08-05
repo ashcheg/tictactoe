@@ -36,25 +36,33 @@ const Gameboard = (() => {
     }
 })();
 
+const playerFactory = (playerSign) => {
+    return {
+        playerSign
+    }
+}
+
+
 const displayController = (() => {
-    let playerSign = "x";
+    let playerSign;
     //player mode switch
     function signSwitch(sign) {
-        playerSign = sign;
-        console.log(playerSign);
+        displayController.playerSign = sign;
     }
 
     // playerButtons.forEach(btn => btn.addEventListener("click", signSwitch(btn.getAttribute("id"))));
 
     const xPlayer = document.getElementById("xPlayer");
     const oPlayer = document.getElementById("oPlayer");
+    const playerOne = playerFactory("x");
+    const playerTwo = playerFactory("o");
 
     xPlayer.addEventListener("click", function() {
-        signSwitch("x")
+        signSwitch("x");
     });
 
     oPlayer.addEventListener("click", function() {
-        signSwitch("o")
+        signSwitch("o");
     });
 
 
@@ -68,17 +76,3 @@ const displayController = (() => {
     //reset game
     //check for win
 })();
-
-const playerFactory = (playerSign) => {
-    return {
-        playerSign
-    }
-}
-
-
-
-//add event listeners to the board
-
-/*
-
-*/
