@@ -1,7 +1,7 @@
 // Gameboard module
 const Gameboard = (() => {
-    gameBoard = ['', '', '', '', '', '', '', '', ''];
-    gameBoardDiv = document.getElementById("game-board");
+    let gameBoard = ['', '', '', '', '', '', '', '', ''];
+    let gameBoardDiv = document.getElementById("game-board");
 
     // show Gameboard on the page
     function render() {
@@ -29,11 +29,59 @@ const Gameboard = (() => {
             addMark(cellID, sign);
         }
     });
+
+//     function checkWin(gameBoard) {
+//         console.log('lol');
+//         // 1 2 3
+//         if ((gameBoard[0] === gameBoard[1]) && (gameBoard[0]=== gameBoard[2])) {
+//             console.log("win");
+//         } else {
+//             console.log("lose");
+//         }
+//         // 4 5 6 
+//         // 7 8 9
+
+//         // 1 4 7
+//         // 2 5 8
+//         // 3 6 9
+
+//         // 1 5 9
+//         // 3 5 7
+//     }
     
-    return {
-        render: render(),
-        addMark: addMark
+//     return {
+//         render: render(),
+//         board: gameBoard,
+//         addMark: addMark,
+//         checkWin: checkWin
+//     }
+
+// })();
+
+function checkWin() {
+    // 1 2 3
+    if ((gameBoard[0] === gameBoard[1]) && (gameBoard[0]=== gameBoard[2])) {
+        console.log("win");
+    } else {
+        console.log("lose");
     }
+    // 4 5 6 
+    // 7 8 9
+
+    // 1 4 7
+    // 2 5 8
+    // 3 6 9
+
+    // 1 5 9
+    // 3 5 7
+}
+
+return {
+    render: render(),
+    addMark: addMark,
+    checkWin: checkWin
+}
+
 })();
 
 const playerFactory = (playerSign) => {
@@ -41,7 +89,6 @@ const playerFactory = (playerSign) => {
         playerSign
     }
 }
-
 
 const displayController = (() => {
     let playerSign;
