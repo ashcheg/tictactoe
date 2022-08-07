@@ -30,57 +30,56 @@ const Gameboard = (() => {
         }
     });
 
-//     function checkWin(gameBoard) {
-//         console.log('lol');
-//         // 1 2 3
-//         if ((gameBoard[0] === gameBoard[1]) && (gameBoard[0]=== gameBoard[2])) {
-//             console.log("win");
-//         } else {
-//             console.log("lose");
-//         }
-//         // 4 5 6 
-//         // 7 8 9
+    function checkWin() {
+        // 1 2 3
+        if ((gameBoard[0] === gameBoard[1]) && (gameBoard[0]=== gameBoard[2])) {
+            message = (gameBoard[0]=="x") ? "X wins!":"O wins!"
+            console.log(message)
+        }
+        // 4 5 6 
+        if ((gameBoard[3] === gameBoard[4]) && (gameBoard[3]=== gameBoard[5])) {
+            message = (gameBoard[0]=="x") ? "X wins!":"O wins!"
+            console.log(message)
+        }
+        // 7 8 9
+        if ((gameBoard[6] === gameBoard[7]) && (gameBoard[6]=== gameBoard[8])) {
+            message = (gameBoard[0]=="x") ? "X wins!":"O wins!"
+            console.log(message)
+        }
+        // 1 4 7
+        if ((gameBoard[0] === gameBoard[3]) && (gameBoard[0]=== gameBoard[6])) {
+            message = (gameBoard[0]=="x") ? "X wins!":"O wins!"
+            console.log(message)
+        }
+        // 2 5 8
+        if ((gameBoard[1] === gameBoard[4]) && (gameBoard[1]=== gameBoard[7])) {
+            message = (gameBoard[0]=="x") ? "X wins!":"O wins!"
+            console.log(message)
+        }
+        // 3 6 9
+        if ((gameBoard[2] === gameBoard[5]) && (gameBoard[2]=== gameBoard[8])) {
+            message = (gameBoard[0]=="x") ? "X wins!":"O wins!"
+            console.log(message)
+        }
 
-//         // 1 4 7
-//         // 2 5 8
-//         // 3 6 9
+        // 1 5 9
+        if ((gameBoard[0] === gameBoard[4]) && (gameBoard[0]=== gameBoard[8])) {
+            message = (gameBoard[0]=="x") ? "X wins!":"O wins!"
+            console.log(message)
+        }
 
-//         // 1 5 9
-//         // 3 5 7
-//     }
-    
-//     return {
-//         render: render(),
-//         board: gameBoard,
-//         addMark: addMark,
-//         checkWin: checkWin
-//     }
-
-// })();
-
-function checkWin() {
-    // 1 2 3
-    if ((gameBoard[0] === gameBoard[1]) && (gameBoard[0]=== gameBoard[2])) {
-        console.log("win");
-    } else {
-        console.log("lose");
+        // 3 5 7
+        if ((gameBoard[2] === gameBoard[4]) && (gameBoard[2]=== gameBoard[6])) {
+            message = (gameBoard[0]=="x") ? "X wins!":"O wins!"
+            console.log(message)
+        }
     }
-    // 4 5 6 
-    // 7 8 9
 
-    // 1 4 7
-    // 2 5 8
-    // 3 6 9
-
-    // 1 5 9
-    // 3 5 7
-}
-
-return {
-    render: render(),
-    addMark: addMark,
-    checkWin: checkWin
-}
+    return {
+        render: render(),
+        addMark: addMark,
+        checkWin: checkWin
+    }
 
 })();
 
