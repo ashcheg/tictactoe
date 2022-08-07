@@ -27,50 +27,53 @@ const Gameboard = (() => {
             let cellID = event.target.getAttribute('id');
             sign = displayController.playerSign;
             addMark(cellID, sign);
+            checkWin();
+            // change sign of the player
+            (displayController.playerSign == "x") ? displayController.playerSign = "o" : displayController.playerSign = "x";
         }
     });
 
     function checkWin() {
         // 1 2 3
-        if ((gameBoard[0] === gameBoard[1]) && (gameBoard[0]=== gameBoard[2])) {
+        if ((gameBoard[0] === gameBoard[1]) && (gameBoard[0]=== gameBoard[2]) && !(gameBoard[0]=="")) {
             message = (gameBoard[0]=="x") ? "X wins!":"O wins!"
             console.log(message)
         }
         // 4 5 6 
-        if ((gameBoard[3] === gameBoard[4]) && (gameBoard[3]=== gameBoard[5])) {
-            message = (gameBoard[0]=="x") ? "X wins!":"O wins!"
+        if ((gameBoard[3] === gameBoard[4]) && (gameBoard[3]=== gameBoard[5]) && !(gameBoard[3]=="")) {
+            message = (gameBoard[3]=="x") ? "X wins!":"O wins!"
             console.log(message)
         }
         // 7 8 9
-        if ((gameBoard[6] === gameBoard[7]) && (gameBoard[6]=== gameBoard[8])) {
-            message = (gameBoard[0]=="x") ? "X wins!":"O wins!"
+        if ((gameBoard[6] === gameBoard[7]) && (gameBoard[6]=== gameBoard[8]) && !(gameBoard[6]=="")) {
+            message = (gameBoard[6]=="x") ? "X wins!":"O wins!"
             console.log(message)
         }
         // 1 4 7
-        if ((gameBoard[0] === gameBoard[3]) && (gameBoard[0]=== gameBoard[6])) {
+        if ((gameBoard[0] === gameBoard[3]) && (gameBoard[0]=== gameBoard[6]) && !(gameBoard[0]=="")) {
             message = (gameBoard[0]=="x") ? "X wins!":"O wins!"
             console.log(message)
         }
         // 2 5 8
-        if ((gameBoard[1] === gameBoard[4]) && (gameBoard[1]=== gameBoard[7])) {
-            message = (gameBoard[0]=="x") ? "X wins!":"O wins!"
+        if ((gameBoard[1] === gameBoard[4]) && (gameBoard[1]=== gameBoard[7]) && !(gameBoard[1]=="")) {
+            message = (gameBoard[1]=="x") ? "X wins!":"O wins!"
             console.log(message)
         }
         // 3 6 9
-        if ((gameBoard[2] === gameBoard[5]) && (gameBoard[2]=== gameBoard[8])) {
-            message = (gameBoard[0]=="x") ? "X wins!":"O wins!"
+        if ((gameBoard[2] === gameBoard[5]) && (gameBoard[2]=== gameBoard[8]) && !(gameBoard[2]=="")) {
+            message = (gameBoard[2]=="x") ? "X wins!":"O wins!"
             console.log(message)
         }
 
         // 1 5 9
-        if ((gameBoard[0] === gameBoard[4]) && (gameBoard[0]=== gameBoard[8])) {
+        if ((gameBoard[0] === gameBoard[4]) && (gameBoard[0]=== gameBoard[8]) && !(gameBoard[0]=="")) {
             message = (gameBoard[0]=="x") ? "X wins!":"O wins!"
             console.log(message)
         }
 
         // 3 5 7
-        if ((gameBoard[2] === gameBoard[4]) && (gameBoard[2]=== gameBoard[6])) {
-            message = (gameBoard[0]=="x") ? "X wins!":"O wins!"
+        if ((gameBoard[2] === gameBoard[4]) && (gameBoard[2]=== gameBoard[6]) && !(gameBoard[2]=="")) {
+            message = (gameBoard[2]=="x") ? "X wins!":"O wins!"
             console.log(message)
         }
     }
