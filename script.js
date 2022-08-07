@@ -78,10 +78,18 @@ const Gameboard = (() => {
         }
     }
 
+    function resetBoard() {
+        for (i=0; i<=(gameBoard.length-1); i++) {
+            gameBoard[i] = "";
+        }
+        render();
+    }
+
     return {
         render: render(),
         addMark: addMark,
-        checkWin: checkWin
+        checkWin: checkWin,
+        resetBoard: resetBoard
     }
 
 })();
@@ -103,8 +111,8 @@ const displayController = (() => {
 
     const xPlayer = document.getElementById("xPlayer");
     const oPlayer = document.getElementById("oPlayer");
-    const playerOne = playerFactory("x");
-    const playerTwo = playerFactory("o");
+    // const playerOne = playerFactory("x");
+    // const playerTwo = playerFactory("o");
 
     xPlayer.addEventListener("click", function() {
         signSwitch("x");
@@ -114,14 +122,18 @@ const displayController = (() => {
         signSwitch("o");
     });
 
+    // restart game
+    const restartBtn = document.getElementById("restart");
+    restartBtn.addEventListener("click", function() {
+        Gameboard.resetBoard();
+    });
+    
 
     return {
         signSwitch: signSwitch,
         playerSign: playerSign
     }
-    //find all buttons
-    //create players
     
-    //reset game
-    //check for win
+
+    //create players with names
 })();
