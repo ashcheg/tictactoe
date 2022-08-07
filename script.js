@@ -28,7 +28,7 @@ const Gameboard = (() => {
             sign = displayController.playerSign;
             addMark(cellID, sign);
             checkWin();
-            // change sign of the player
+            // change sign of the player after every turn
             (displayController.playerSign == "x") ? displayController.playerSign = "o" : displayController.playerSign = "x";
         }
     });
@@ -101,18 +101,14 @@ const playerFactory = (playerSign) => {
 }
 
 const displayController = (() => {
-    let playerSign;
+    let playerSign = "x";
     //player mode switch
     function signSwitch(sign) {
         displayController.playerSign = sign;
     }
 
-    // playerButtons.forEach(btn => btn.addEventListener("click", signSwitch(btn.getAttribute("id"))));
-
     const xPlayer = document.getElementById("xPlayer");
     const oPlayer = document.getElementById("oPlayer");
-    // const playerOne = playerFactory("x");
-    // const playerTwo = playerFactory("o");
 
     xPlayer.addEventListener("click", function() {
         signSwitch("x");
@@ -135,5 +131,7 @@ const displayController = (() => {
     }
     
 
-    //create players with names
+    // create players with names
+    // const playerOne = playerFactory("x");
+    // const playerTwo = playerFactory("o");
 })();
