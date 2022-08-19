@@ -180,9 +180,16 @@ const displayController = (() => {
         stopRound: stopRound,
         showPopup: showPopup
     }
-    
-
-    // create players with names
-    // const playerOne = playerFactory("x");
-    // const playerTwo = playerFactory("o");
 })();
+
+// add styling to congratulations popup
+// add more styling to inactive elements
+// add new game button to congratulations button
+
+// create players with names
+// const playerOne = playerFactory("x", nameX);
+// const playerTwo = playerFactory("o", nameO);
+
+// think about logic of multiple rounds
+// accumulating score inside created players
+

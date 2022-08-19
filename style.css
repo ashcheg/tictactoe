@@ -9,12 +9,12 @@ body {
 
 :root {
     --cell-color: #3FA796;
-    --cell-color-inactive: #b8e6de;
+    --cell-color-inactive: #eeeeee;
     --cell-border: #2A0944; /*#9D75CB; */
     --text-color: #2A0944;
     --shadows:  #A10035;  
     --secondary-color:  #FEC260; 
-    --secondary-color-inactive:  #ffe9c5; 
+    --secondary-color-inactive:  #f0ece6; 
 }
 
 #game-board {
