@@ -55,6 +55,7 @@ h3 {
 
 button {
     border: none;
+    max-height: 50px;
     border-radius: 3px;
     color: var(--text-color);
     background-color: var(--secondary-color);

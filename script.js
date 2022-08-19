@@ -50,40 +50,33 @@ const Gameboard = (() => {
         }
         // 4 5 6 
         if ((gameBoard[3] === gameBoard[4]) && (gameBoard[3]=== gameBoard[5]) && !(gameBoard[3]=="")) {
-            message = (gameBoard[3]=="x") ? "X wins!":"O wins!"
-            console.log(message)
+            (gameBoard[3]=="x") ? announceWin("X"): announceWin("O");
         }
         // 7 8 9
         if ((gameBoard[6] === gameBoard[7]) && (gameBoard[6]=== gameBoard[8]) && !(gameBoard[6]=="")) {
-            message = (gameBoard[6]=="x") ? "X wins!":"O wins!"
-            console.log(message)
+            (gameBoard[6]=="x") ? announceWin("X"): announceWin("O");
         }
         // 1 4 7
         if ((gameBoard[0] === gameBoard[3]) && (gameBoard[0]=== gameBoard[6]) && !(gameBoard[0]=="")) {
-            message = (gameBoard[0]=="x") ? "X wins!":"O wins!"
-            console.log(message)
+            (gameBoard[0]=="x") ? announceWin("X"): announceWin("O");
         }
         // 2 5 8
         if ((gameBoard[1] === gameBoard[4]) && (gameBoard[1]=== gameBoard[7]) && !(gameBoard[1]=="")) {
-            message = (gameBoard[1]=="x") ? "X wins!":"O wins!"
-            console.log(message)
+            (gameBoard[1]=="x") ? announceWin("X"): announceWin("O");
         }
         // 3 6 9
         if ((gameBoard[2] === gameBoard[5]) && (gameBoard[2]=== gameBoard[8]) && !(gameBoard[2]=="")) {
-            message = (gameBoard[2]=="x") ? "X wins!":"O wins!"
-            console.log(message)
+            (gameBoard[2]=="x") ? announceWin("X"): announceWin("O");
         }
 
         // 1 5 9
         if ((gameBoard[0] === gameBoard[4]) && (gameBoard[0]=== gameBoard[8]) && !(gameBoard[0]=="")) {
-            message = (gameBoard[0]=="x") ? "X wins!":"O wins!"
-            console.log(message)
+            (gameBoard[0]=="x") ? announceWin("X"): announceWin("O");
         }
 
         // 3 5 7
         if ((gameBoard[2] === gameBoard[4]) && (gameBoard[2]=== gameBoard[6]) && !(gameBoard[2]=="")) {
-            message = (gameBoard[2]=="x") ? "X wins!":"O wins!"
-            console.log(message)
+            (gameBoard[2]=="x") ? announceWin("X"): announceWin("O");
         }
     }
 
