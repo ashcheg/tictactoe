@@ -23,14 +23,19 @@ const Gameboard = (() => {
     }
 
     gameBoardDiv.addEventListener("click", function(event){
-        if (event.target.innerHTML == "") {
-            let cellID = event.target.getAttribute('id');
-            sign = displayController.playerSign;
-            addMark(cellID, sign);
-            checkWin();
-            // change sign of the player after every turn
-            (displayController.playerSign == "x") ? displayController.playerSign = "o" : displayController.playerSign = "x";
+        if (gameBoardDiv.classList.contains("active")) {
+            if (event.target.innerHTML == "") {
+                let cellID = event.target.getAttribute('id');
+                sign = displayController.playerSign;
+                addMark(cellID, sign);
+                checkWin();
+                // change sign of the player after every turn
+                (displayController.playerSign == "x") ? displayController.playerSign = "o" : displayController.playerSign = "x";
+            }
+        } else {
+            alert("choose your player sign");
         }
+        
     });
 
     function checkWin() {
@@ -82,6 +87,7 @@ const Gameboard = (() => {
         for (i=0; i<=(gameBoard.length-1); i++) {
             gameBoard[i] = "";
         }
+        gameBoardDiv.classList.remove("active");
         render();
     }
 
@@ -94,34 +100,63 @@ const Gameboard = (() => {
 
 })();
 
-const playerFactory = (playerSign) => {
+const playerFactory = (playerSign, playerName) => {
     return {
-        playerSign
+        playerSign,
+        playerName
     }
 }
 
 const displayController = (() => {
     let playerSign = "x";
-    //player mode switch
+    const xPlayer = document.getElementById("xPlayer");
+    const oPlayer = document.getElementById("oPlayer");
+    const gameboard = document.getElementById("game-board");
+
+    // player mode switch
     function signSwitch(sign) {
         displayController.playerSign = sign;
     }
 
-    const xPlayer = document.getElementById("xPlayer");
-    const oPlayer = document.getElementById("oPlayer");
+    // enter round mode (can't alter signs;gameboard is active)
+    function startRound() {
+        xPlayer.classList.remove("active");
+        oPlayer.classList.remove("active");
+        xPlayer.classList.add("inactive");
+        oPlayer.classList.add("inactive");
+        gameboard.classList.add("active");
+        gameboard.classList.remove("inactive");
+    }
 
     xPlayer.addEventListener("click", function() {
-        signSwitch("x");
+        if (xPlayer.classList.contains("active")) {
+            signSwitch("x");
+            startRound();
+        } else {
+            alert("you can't change sign in the middle of the game");
+        }
     });
 
     oPlayer.addEventListener("click", function() {
-        signSwitch("o");
+        if (oPlayer.classList.contains("active")) {
+            signSwitch("o");
+            startRound();
+        }
+        else {
+            alert("you can't change sign in the middle of the game");
+        }
     });
 
     // restart game
     const restartBtn = document.getElementById("restart");
     restartBtn.addEventListener("click", function() {
         Gameboard.resetBoard();
+        xPlayer.classList.add("active");
+        oPlayer.classList.add("active");
+        xPlayer.classList.remove("inactive");
+        oPlayer.classList.remove("inactive");
+        gameboard.classList.remove("active");
+        gameboard.classList.add("inactive");
     });
     
 
