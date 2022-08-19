@@ -15,15 +15,7 @@ body {
     --shadows:  #A10035;  
     --secondary-color:  #FEC260; 
     --secondary-color-inactive:  #ffe9c5; 
-
-    /* --cell-color: #9D75CB;
-    --cell-border: #AAFFE5;
-    --text-color: #AAFFE5;
-    --shadows:  #8C1A6A; 
-    --secondary-color:  #A657AE;  */
 }
-
-
 
 #game-board {
     background-color: var(--cell-border);
@@ -92,6 +84,13 @@ button.inactive {
     background-color: var(--secondary-color-inactive);
 }
 
+.hidden {
+    visibility: hidden;
+}
+
+#winnerPopup.show {
+    visibility: visible;
+}
 
 
 

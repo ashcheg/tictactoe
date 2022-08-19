@@ -38,11 +38,15 @@ const Gameboard = (() => {
         
     });
 
+    function announceWin(winner) {
+        displayController.showPopup(winner);
+        displayController.stopRound();
+    }
+
     function checkWin() {
         // 1 2 3
         if ((gameBoard[0] === gameBoard[1]) && (gameBoard[0]=== gameBoard[2]) && !(gameBoard[0]=="")) {
-            message = (gameBoard[0]=="x") ? "X wins!":"O wins!"
-            console.log(message)
+            (gameBoard[0]=="x") ? announceWin("X"): announceWin("O");
         }
         // 4 5 6 
         if ((gameBoard[3] === gameBoard[4]) && (gameBoard[3]=== gameBoard[5]) && !(gameBoard[3]=="")) {
@@ -112,6 +116,9 @@ const displayController = (() => {
     const xPlayer = document.getElementById("xPlayer");
     const oPlayer = document.getElementById("oPlayer");
     const gameboard = document.getElementById("game-board");
+    const choosingSign = document.getElementById("choosing");
+    // congratulating winner popup
+    const popup = document.getElementById("winnerPopup");
 
     // player mode switch
     function signSwitch(sign) {
@@ -126,6 +133,12 @@ const displayController = (() => {
         oPlayer.classList.add("inactive");
         gameboard.classList.add("active");
         gameboard.classList.remove("inactive");
+        choosingSign.classList.add("hidden");
+    }
+
+    function stopRound() {
+        gameboard.classList.remove("active");
+        gameboard.classList.add("inactive");
     }
 
     xPlayer.addEventListener("click", function() {
@@ -149,20 +162,30 @@ const displayController = (() => {
 
     // restart game
     const restartBtn = document.getElementById("restart");
-    restartBtn.addEventListener("click", function() {
+
+    function restartGame() {
         Gameboard.resetBoard();
+        stopRound();
         xPlayer.classList.add("active");
         oPlayer.classList.add("active");
         xPlayer.classList.remove("inactive");
         oPlayer.classList.remove("inactive");
-        gameboard.classList.remove("active");
-        gameboard.classList.add("inactive");
-    });
-    
+        choosingSign.classList.remove("hidden");
+        popup.classList.remove("show");
+    }
 
+    restartBtn.addEventListener("click", restartGame);
+
+    function showPopup(winner) {
+        popup.innerHTML = `Congratulations! ${winner} wins!`;
+        popup.classList.add("show");
+    };
+    
     return {
         signSwitch: signSwitch,
-        playerSign: playerSign
+        playerSign: playerSign,
+        stopRound: stopRound,
+        showPopup: showPopup
     }
     
 
