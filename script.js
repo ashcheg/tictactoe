@@ -17,7 +17,7 @@ const Gameboard = (() => {
     }
 
     function addMark(cellID, sign) {
-        cellNumber = cellID.substr((cellID.length-1));
+        cellNumber = cellID.substring((cellID.length-1));
         gameBoard[cellNumber] = sign;
         render();
     }
@@ -181,6 +181,8 @@ const displayController = (() => {
         showPopup: showPopup
     }
 })();
+
+// write the logic for a tie
 
 // add styling to congratulations popup
 // add more styling to inactive elements
