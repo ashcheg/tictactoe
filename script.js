@@ -2,6 +2,7 @@
 const Gameboard = (() => {
     let gameBoard = ['', '', '', '', '', '', '', '', ''];
     let gameBoardDiv = document.getElementById("game-board");
+    let countTurns = 0
 
     // show Gameboard on the page
     function render() {
@@ -24,6 +25,7 @@ const Gameboard = (() => {
 
     gameBoardDiv.addEventListener("click", function(event){
         if (gameBoardDiv.classList.contains("active")) {
+            countTurns += 1;
             if (event.target.innerHTML == "") {
                 let cellID = event.target.getAttribute('id');
                 sign = displayController.playerSign;
@@ -33,7 +35,7 @@ const Gameboard = (() => {
                 (displayController.playerSign == "x") ? displayController.playerSign = "o" : displayController.playerSign = "x";
             }
         } else {
-            alert("choose your player sign");
+            alert("choose your player's sign");
         }
         
     });
@@ -77,6 +79,9 @@ const Gameboard = (() => {
         // 3 5 7
         if ((gameBoard[2] === gameBoard[4]) && (gameBoard[2]=== gameBoard[6]) && !(gameBoard[2]=="")) {
             (gameBoard[2]=="x") ? announceWin("X"): announceWin("O");
+        }
+        if (countTurns === 9) {
+            announceWin("draw");
         }
     }
 
@@ -170,7 +175,11 @@ const displayController = (() => {
     restartBtn.addEventListener("click", restartGame);
 
     function showPopup(winner) {
-        popup.innerHTML = `Congratulations! ${winner} wins!`;
+        if (winner === "draw") {
+            popup.innerHTML = `It's a draw!`;
+        } else {
+            popup.innerHTML = `Congratulations ${winner}!`;
+        }
         popup.classList.add("show");
     };
     
@@ -181,8 +190,6 @@ const displayController = (() => {
         showPopup: showPopup
     }
 })();
-
-// write the logic for a tie
 
 // add styling to congratulations popup
 // add more styling to inactive elements
