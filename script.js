@@ -21,6 +21,11 @@ const Gameboard = (() => {
         cellNumber = cellID.substring((cellID.length-1));
         gameBoard[cellNumber] = sign;
         render();
+        if (sign === "x") {
+            displayController.chosenSign.innerHTML= `O's turn`;
+        } else {
+            displayController.chosenSign.innerHTML= `X's turn`;
+        }
     }
 
     gameBoardDiv.addEventListener("click", function(event){
@@ -111,10 +116,10 @@ const playerFactory = (playerSign, playerName) => {
 
 const displayController = (() => {
     let playerSign = "x";
+    const chosenSign = document.getElementById("choosing");
     const xPlayer = document.getElementById("xPlayer");
     const oPlayer = document.getElementById("oPlayer");
     const gameboard = document.getElementById("game-board");
-    const choosingSign = document.getElementById("choosing");
     // congratulating winner popup
     const popup = document.getElementById("winnerPopup");
 
@@ -131,7 +136,7 @@ const displayController = (() => {
         oPlayer.classList.add("inactive");
         gameboard.classList.add("active");
         gameboard.classList.remove("inactive");
-        choosingSign.classList.add("hidden");
+        chosenSign.innerHTML= `${displayController.playerSign}'s turn`;
     }
 
     function stopRound() {
@@ -168,7 +173,7 @@ const displayController = (() => {
         oPlayer.classList.add("active");
         xPlayer.classList.remove("inactive");
         oPlayer.classList.remove("inactive");
-        choosingSign.classList.remove("hidden");
+        chosenSign.classList.remove("hidden");
         popup.classList.remove("show");
     }
 
@@ -178,12 +183,14 @@ const displayController = (() => {
         if (winner === "draw") {
             popup.innerHTML = `It's a draw!`;
         } else {
-            popup.innerHTML = `Congratulations ${winner}!`;
+            popup.innerHTML = `Congratulations ${winner} wins!`;
         }
         popup.classList.add("show");
+        chosenSign.innerHTML = '';
     };
     
     return {
+        chosenSign: chosenSign,
         signSwitch: signSwitch,
         playerSign: playerSign,
         stopRound: stopRound,
