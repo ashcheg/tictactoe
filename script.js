@@ -122,6 +122,7 @@ const displayController = (() => {
     const gameboard = document.getElementById("game-board");
     // congratulating winner popup
     const popup = document.getElementById("winnerPopup");
+    const message  =document.getElementById("winnerMessage");
 
     // player mode switch
     function signSwitch(sign) {
@@ -165,6 +166,7 @@ const displayController = (() => {
 
     // restart game
     const restartBtn = document.getElementById("restart");
+    const newGame = document.getElementById("new-game");
 
     function restartGame() {
         Gameboard.resetBoard();
@@ -174,18 +176,19 @@ const displayController = (() => {
         xPlayer.classList.remove("inactive");
         oPlayer.classList.remove("inactive");
         chosenSign.classList.remove("hidden");
-        popup.classList.remove("show");
+        popup.classList.add("hidden");
     }
 
     restartBtn.addEventListener("click", restartGame);
+    newGame.addEventListener("click", restartGame);
 
     function showPopup(winner) {
         if (winner === "draw") {
-            popup.innerHTML = `It's a draw!`;
+            message.innerHTML = `It's a draw!`;
         } else {
-            popup.innerHTML = `Congratulations ${winner} wins!`;
+            message.innerHTML = `Congratulations ${winner} wins!`;
         }
-        popup.classList.add("show");
+        popup.classList.remove("hidden");
         chosenSign.innerHTML = '';
     };
     
