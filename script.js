@@ -21,7 +21,7 @@ const Gameboard = (() => {
         cellNumber = cellID.substring((cellID.length-1));
         gameBoard[cellNumber] = sign;
         render();
-        if (sign === "x") {
+        if (sign === "X") {
             displayController.chosenSign.innerHTML= `O's turn`;
         } else {
             displayController.chosenSign.innerHTML= `X's turn`;
@@ -37,7 +37,7 @@ const Gameboard = (() => {
                 addMark(cellID, sign);
                 checkWin();
                 // change sign of the player after every turn
-                (displayController.playerSign == "x") ? displayController.playerSign = "o" : displayController.playerSign = "x";
+                (displayController.playerSign == "X") ? displayController.playerSign = "O" : displayController.playerSign = "X";
             }
         } else {
             alert("choose your player's sign");
@@ -53,37 +53,37 @@ const Gameboard = (() => {
     function checkWin() {
         // 1 2 3
         if ((gameBoard[0] === gameBoard[1]) && (gameBoard[0]=== gameBoard[2]) && !(gameBoard[0]=="")) {
-            (gameBoard[0]=="x") ? announceWin("X"): announceWin("O");
+            (gameBoard[0]=="X") ? announceWin("X"): announceWin("O");
         }
         // 4 5 6 
         if ((gameBoard[3] === gameBoard[4]) && (gameBoard[3]=== gameBoard[5]) && !(gameBoard[3]=="")) {
-            (gameBoard[3]=="x") ? announceWin("X"): announceWin("O");
+            (gameBoard[3]=="X") ? announceWin("X"): announceWin("O");
         }
         // 7 8 9
         if ((gameBoard[6] === gameBoard[7]) && (gameBoard[6]=== gameBoard[8]) && !(gameBoard[6]=="")) {
-            (gameBoard[6]=="x") ? announceWin("X"): announceWin("O");
+            (gameBoard[6]=="X") ? announceWin("X"): announceWin("O");
         }
         // 1 4 7
         if ((gameBoard[0] === gameBoard[3]) && (gameBoard[0]=== gameBoard[6]) && !(gameBoard[0]=="")) {
-            (gameBoard[0]=="x") ? announceWin("X"): announceWin("O");
+            (gameBoard[0]=="X") ? announceWin("X"): announceWin("O");
         }
         // 2 5 8
         if ((gameBoard[1] === gameBoard[4]) && (gameBoard[1]=== gameBoard[7]) && !(gameBoard[1]=="")) {
-            (gameBoard[1]=="x") ? announceWin("X"): announceWin("O");
+            (gameBoard[1]=="X") ? announceWin("X"): announceWin("O");
         }
         // 3 6 9
         if ((gameBoard[2] === gameBoard[5]) && (gameBoard[2]=== gameBoard[8]) && !(gameBoard[2]=="")) {
-            (gameBoard[2]=="x") ? announceWin("X"): announceWin("O");
+            (gameBoard[2]=="X") ? announceWin("X"): announceWin("O");
         }
 
         // 1 5 9
         if ((gameBoard[0] === gameBoard[4]) && (gameBoard[0]=== gameBoard[8]) && !(gameBoard[0]=="")) {
-            (gameBoard[0]=="x") ? announceWin("X"): announceWin("O");
+            (gameBoard[0]=="X") ? announceWin("X"): announceWin("O");
         }
 
         // 3 5 7
         if ((gameBoard[2] === gameBoard[4]) && (gameBoard[2]=== gameBoard[6]) && !(gameBoard[2]=="")) {
-            (gameBoard[2]=="x") ? announceWin("X"): announceWin("O");
+            (gameBoard[2]=="X") ? announceWin("X"): announceWin("O");
         }
         if (countTurns === 9) {
             announceWin("draw");
@@ -115,7 +115,7 @@ const playerFactory = (playerSign, playerName) => {
 }
 
 const displayController = (() => {
-    let playerSign = "x";
+    let playerSign = "X";
     const chosenSign = document.getElementById("choosing");
     const xPlayer = document.getElementById("xPlayer");
     const oPlayer = document.getElementById("oPlayer");
@@ -146,7 +146,7 @@ const displayController = (() => {
 
     xPlayer.addEventListener("click", function() {
         if (xPlayer.classList.contains("active")) {
-            signSwitch("x");
+            signSwitch("X");
             startRound();
         } else {
             alert("you can't change sign in the middle of the game");
@@ -155,7 +155,7 @@ const displayController = (() => {
 
     oPlayer.addEventListener("click", function() {
         if (oPlayer.classList.contains("active")) {
-            signSwitch("o");
+            signSwitch("O");
             startRound();
         }
         else {
