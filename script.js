@@ -124,7 +124,7 @@ const displayController = (() => {
     const gameboard = document.getElementById("game-board");
     // congratulating winner popup
     const popup = document.getElementById("winnerPopup");
-    const message  =document.getElementById("winnerMessage");
+    const message  = document.getElementById("winnerMessage");
 
     // player mode switch
     function signSwitch(sign) {
@@ -188,7 +188,7 @@ const displayController = (() => {
         if (winner === "draw") {
             message.innerHTML = `It's a draw!`;
         } else {
-            message.innerHTML = `Congratulations ${winner} wins!`;
+            message.innerHTML = `Congratulations, ${winner} wins!`;
         }
         popup.classList.remove("hidden");
         chosenSign.innerHTML = '';
