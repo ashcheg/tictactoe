@@ -54,6 +54,10 @@ h3 {
     text-align: center;
 }
 
+p {
+    margin: 0;
+}
+
 button {
     border: none;
     max-height: 50px;
@@ -91,16 +95,13 @@ button.inactive {
     visibility: hidden;
 }
 
-#winner-popup {
-    background-color: var(--cell-color-inactive);
+#winner-container {
+    background-color: var(--cell-color);
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    max-width: 100%;
     min-height: 100vh;
     margin: 0;
-    font-size: 20px;
     position: fixed;
     top: 0;
     left: 0;
@@ -108,10 +109,22 @@ button.inactive {
     width: 100vw;
 }
 
-#winner-container {
+#winner-popup {
+    background-color: var(--cell-color-inactive);
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 100%;
+    font-size: 20px;
+    padding: 30px 50px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#winner-popup p {
+    color: var(--text-color);
 }
 
 #new-game {

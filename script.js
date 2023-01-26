@@ -203,9 +203,7 @@ const displayController = (() => {
     }
 })();
 
-// add styling to congratulations popup
-// add more styling to inactive elements
-// add new game button to congratulations button
+// add instruction at the beginning of the game
 
 // create players with names
 // const playerOne = playerFactory("x", nameX);
