@@ -95,6 +95,8 @@ const Gameboard = (() => {
             gameBoard[i] = "";
         }
         gameBoardDiv.classList.remove("active");
+        countTurns = 0;
+        /*displayController.chosenSign.innerHTML = "";*/
         render();
     }
 
