@@ -178,6 +178,7 @@ const displayController = (() => {
         xPlayer.classList.remove("inactive");
         oPlayer.classList.remove("inactive");
         chosenSign.classList.remove("hidden");
+        chosenSign.innerHTML= `Choose a player`;
         popup.classList.add("hidden");
     }
 
@@ -204,6 +205,8 @@ const displayController = (() => {
 })();
 
 // add instruction at the beginning of the game
+
+// add fade for winner popup
 
 // create players with names
 // const playerOne = playerFactory("x", nameX);
