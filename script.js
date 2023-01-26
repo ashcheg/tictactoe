@@ -123,8 +123,8 @@ const displayController = (() => {
     const oPlayer = document.getElementById("oPlayer");
     const gameboard = document.getElementById("game-board");
     // congratulating winner popup
-    const popup = document.getElementById("winnerPopup");
-    const message  = document.getElementById("winnerMessage");
+    const popup = document.getElementById("winner-container");
+    const message  = document.getElementById("winner-message");
 
     // player mode switch
     function signSwitch(sign) {
