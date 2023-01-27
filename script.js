@@ -180,6 +180,7 @@ const displayController = (() => {
         chosenSign.classList.remove("hidden");
         chosenSign.innerHTML= `Choose a player`;
         popup.classList.add("hidden");
+        popup.classList.remove('visible');
     }
 
     restartBtn.addEventListener("click", restartGame);
@@ -192,6 +193,7 @@ const displayController = (() => {
             message.innerHTML = `Congratulations, ${winner} wins!`;
         }
         popup.classList.remove("hidden");
+        popup.classList.add('visible');
         chosenSign.innerHTML = '';
     };
     
@@ -203,10 +205,6 @@ const displayController = (() => {
         showPopup: showPopup
     }
 })();
-
-// add instruction at the beginning of the game
-
-// add fade for winner popup
 
 // create players with names
 // const playerOne = playerFactory("x", nameX);
