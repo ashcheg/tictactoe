@@ -178,9 +178,9 @@ const displayController = (() => {
         xPlayer.classList.remove("inactive");
         oPlayer.classList.remove("inactive");
         chosenSign.classList.remove("hidden");
-        chosenSign.innerHTML= `Choose a player`;
         popup.classList.add("hidden");
         popup.classList.remove('visible');
+        chosenSign.innerHTML= `Choose a player`;
     }
 
     restartBtn.addEventListener("click", restartGame);
@@ -210,6 +210,14 @@ const displayController = (() => {
 // const playerOne = playerFactory("x", nameX);
 // const playerTwo = playerFactory("o", nameO);
 
+// create form for names
+// ask to choose sign after the game has started (Player1 chooses X, then Player2 chooses O)
+// Submit button will be Start Game button
+
 // think about logic of multiple rounds
 // accumulating score inside created players
 
+// make Restart game button not active at the beginning
+// create stages : Sart a game -> enter both names -> choose sign -> Start first round -> show scoreboard -> other rounds -> show winner and scoreboard -> restart game button
+
+// Make AI palyer
