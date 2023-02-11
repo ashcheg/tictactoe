@@ -15,7 +15,7 @@ body {
     --text-color: #2A0944;
     --shadows:  #A10035;  
     --secondary-color:  #FEC260; 
-    --secondary-color-inactive:  #f0ece6; 
+    --secondary-color-inactive:  #dcdad6; 
 }
 
 #game-board {
@@ -85,6 +85,11 @@ button:hover {
 
 .inactive > .cell  {
     background-color: var(--cell-color-inactive);
+    border: var(--secondary-color-inactive);
+}
+
+#game-board.inactive {
+    background-color: var(--secondary-color-inactive);
 }
 
 button.inactive {

@@ -220,4 +220,6 @@ const displayController = (() => {
 // make Restart game button not active at the beginning
 // create stages : Sart a game -> enter both names -> choose sign -> Start first round -> show scoreboard -> other rounds -> show winner and scoreboard -> restart game button
 
+
+
 // Make AI palyer
