@@ -117,20 +117,22 @@ const playerFactory = (playerSign, playerName) => {
 }
 
 const displayController = (() => {
+    let playerSign = "X";
+
+    let playerX = document.getElementById('playerX');
+    let playerO = document.getElementById('playerO');
     let playerNames = document.getElementById('player-names')
     playerNames.addEventListener('submit', (e) => {
         e.preventDefault();
-
-        let playerX = document.getElementById('playerX');
-        let playerO = document.getElementById('playerO');
         if (playerX.value == '' || playerO.value == '') {
             alert('Please enter both of players names')
         } else {
-            
+            startRound();
+            playerSign = "X";
         }
     })
 
-    let playerSign = "X";
+    
     const chosenSign = document.getElementById("choosing");
     const xPlayer = document.getElementById("xPlayer");
     const oPlayer = document.getElementById("oPlayer");
@@ -152,7 +154,7 @@ const displayController = (() => {
         oPlayer.classList.add("inactive");
         gameboard.classList.add("active");
         gameboard.classList.remove("inactive");
-        chosenSign.innerHTML= `${displayController.playerSign}'s turn`;
+        chosenSign.innerHTML= `${playerSign}'s turn`;
     }
 
     function stopRound() {
@@ -194,6 +196,8 @@ const displayController = (() => {
         popup.classList.add("hidden");
         popup.classList.remove('visible');
         chosenSign.innerHTML= `Choose a player`;
+        playerX.value = '';
+        playerO.value = '';
     }
 
     restartBtn.addEventListener("click", restartGame);
