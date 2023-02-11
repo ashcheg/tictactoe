@@ -51,6 +51,8 @@ const Gameboard = (() => {
     }
 
     function checkWin() {
+        // add checking number of wins in player's factory functions
+
         // 1 2 3
         if ((gameBoard[0] === gameBoard[1]) && (gameBoard[0]=== gameBoard[2]) && !(gameBoard[0]=="")) {
             (gameBoard[0]=="X") ? announceWin("X"): announceWin("O");
@@ -91,6 +93,7 @@ const Gameboard = (() => {
     }
 
     function resetBoard() {
+
         for (i=0; i<=(gameBoard.length-1); i++) {
             gameBoard[i] = "";
         }
@@ -110,10 +113,15 @@ const Gameboard = (() => {
 })();
 
 const playerFactory = (playerSign, playerName) => {
-    return {
-        playerSign,
-        playerName
+    const wins = 0;
+    const getSign = () => playerSign;
+    const getName = () => playerName;
+    const addWin = () => {
+        wins +=1;
+        // add update of displaying wins
     }
+    const getWin = () => wins;
+    return {getSign, getName, getWin, addWin}
 }
 
 const displayController = (() => {
@@ -128,11 +136,9 @@ const displayController = (() => {
             alert('Please enter both of players names')
         } else {
             startRound();
-            playerSign = "X";
         }
     })
 
-    
     const chosenSign = document.getElementById("choosing");
     const xPlayer = document.getElementById("xPlayer");
     const oPlayer = document.getElementById("oPlayer");
@@ -148,6 +154,10 @@ const displayController = (() => {
 
     // enter round mode (can't alter signs;gameboard is active)
     function startRound() {
+        playerOne = playerFactory("X", playerX);
+        playerTwo = playerFactory("O", playerO);
+        playerSign = "X";
+        alert(`${playerSign}`);
         xPlayer.classList.remove("active");
         oPlayer.classList.remove("active");
         xPlayer.classList.add("inactive");
@@ -226,6 +236,9 @@ const displayController = (() => {
 // create players with names
 // const playerOne = playerFactory("X", nameX);
 // const playerTwo = playerFactory("O", nameO);
+
+// add update of displaying wins
+// add to checkWin() checking player factory for number of wins
 
 // create form for names
 // ask to choose sign after the game has started (Player1 chooses X, then Player2 chooses O)
