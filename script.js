@@ -117,6 +117,19 @@ const playerFactory = (playerSign, playerName) => {
 }
 
 const displayController = (() => {
+    let playerNames = document.getElementById('player-names')
+    playerNames.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        let playerX = document.getElementById('playerX');
+        let playerO = document.getElementById('playerO');
+        if (playerX.value == '' || playerO.value == '') {
+            alert('Please enter both of players names')
+        } else {
+            
+        }
+    })
+
     let playerSign = "X";
     const chosenSign = document.getElementById("choosing");
     const xPlayer = document.getElementById("xPlayer");
@@ -207,8 +220,8 @@ const displayController = (() => {
 })();
 
 // create players with names
-// const playerOne = playerFactory("x", nameX);
-// const playerTwo = playerFactory("o", nameO);
+// const playerOne = playerFactory("X", nameX);
+// const playerTwo = playerFactory("O", nameO);
 
 // create form for names
 // ask to choose sign after the game has started (Player1 chooses X, then Player2 chooses O)
