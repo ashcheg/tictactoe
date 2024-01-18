@@ -2,6 +2,7 @@
 const Gameboard = (() => {
     let gameBoard = ['', '', '', '', '', '', '', '', ''];
     let gameBoardDiv = document.getElementById("game-board");
+    let countTurns = 0
 
     // show Gameboard on the page
     function render() {
@@ -17,23 +18,29 @@ const Gameboard = (() => {
     }
 
     function addMark(cellID, sign) {
-        cellNumber = cellID.substr((cellID.length-1));
+        cellNumber = cellID.substring((cellID.length-1));
         gameBoard[cellNumber] = sign;
         render();
+        if (sign === "X") {
+            displayController.chosenSign.innerHTML= `O's turn`;
+        } else {
+            displayController.chosenSign.innerHTML= `X's turn`;
+        }
     }
 
     gameBoardDiv.addEventListener("click", function(event){
         if (gameBoardDiv.classList.contains("active")) {
+            countTurns += 1;
             if (event.target.innerHTML == "") {
                 let cellID = event.target.getAttribute('id');
                 sign = displayController.playerSign;
                 addMark(cellID, sign);
                 checkWin();
                 // change sign of the player after every turn
-                (displayController.playerSign == "x") ? displayController.playerSign = "o" : displayController.playerSign = "x";
+                (displayController.playerSign == "X") ? displayController.playerSign = "O" : displayController.playerSign = "X";
             }
         } else {
-            alert("choose your player sign");
+            alert("choose your player's sign");
         }
         
     });
@@ -44,47 +51,55 @@ const Gameboard = (() => {
     }
 
     function checkWin() {
+        // add checking number of wins in player's factory functions
+
         // 1 2 3
         if ((gameBoard[0] === gameBoard[1]) && (gameBoard[0]=== gameBoard[2]) && !(gameBoard[0]=="")) {
-            (gameBoard[0]=="x") ? announceWin("X"): announceWin("O");
+            (gameBoard[0]=="X") ? announceWin("X"): announceWin("O");
         }
         // 4 5 6 
         if ((gameBoard[3] === gameBoard[4]) && (gameBoard[3]=== gameBoard[5]) && !(gameBoard[3]=="")) {
-            (gameBoard[3]=="x") ? announceWin("X"): announceWin("O");
+            (gameBoard[3]=="X") ? announceWin("X"): announceWin("O");
         }
         // 7 8 9
         if ((gameBoard[6] === gameBoard[7]) && (gameBoard[6]=== gameBoard[8]) && !(gameBoard[6]=="")) {
-            (gameBoard[6]=="x") ? announceWin("X"): announceWin("O");
+            (gameBoard[6]=="X") ? announceWin("X"): announceWin("O");
         }
         // 1 4 7
         if ((gameBoard[0] === gameBoard[3]) && (gameBoard[0]=== gameBoard[6]) && !(gameBoard[0]=="")) {
-            (gameBoard[0]=="x") ? announceWin("X"): announceWin("O");
+            (gameBoard[0]=="X") ? announceWin("X"): announceWin("O");
         }
         // 2 5 8
         if ((gameBoard[1] === gameBoard[4]) && (gameBoard[1]=== gameBoard[7]) && !(gameBoard[1]=="")) {
-            (gameBoard[1]=="x") ? announceWin("X"): announceWin("O");
+            (gameBoard[1]=="X") ? announceWin("X"): announceWin("O");
         }
         // 3 6 9
         if ((gameBoard[2] === gameBoard[5]) && (gameBoard[2]=== gameBoard[8]) && !(gameBoard[2]=="")) {
-            (gameBoard[2]=="x") ? announceWin("X"): announceWin("O");
+            (gameBoard[2]=="X") ? announceWin("X"): announceWin("O");
         }
 
         // 1 5 9
         if ((gameBoard[0] === gameBoard[4]) && (gameBoard[0]=== gameBoard[8]) && !(gameBoard[0]=="")) {
-            (gameBoard[0]=="x") ? announceWin("X"): announceWin("O");
+            (gameBoard[0]=="X") ? announceWin("X"): announceWin("O");
         }
 
         // 3 5 7
         if ((gameBoard[2] === gameBoard[4]) && (gameBoard[2]=== gameBoard[6]) && !(gameBoard[2]=="")) {
-            (gameBoard[2]=="x") ? announceWin("X"): announceWin("O");
+            (gameBoard[2]=="X") ? announceWin("X"): announceWin("O");
+        }
+        if (countTurns === 9) {
+            announceWin("draw");
         }
     }
 
     function resetBoard() {
+
         for (i=0; i<=(gameBoard.length-1); i++) {
             gameBoard[i] = "";
         }
         gameBoardDiv.classList.remove("active");
+        countTurns = 0;
+        /*displayController.chosenSign.innerHTML = "";*/
         render();
     }
 
@@ -98,20 +113,39 @@ const Gameboard = (() => {
 })();
 
 const playerFactory = (playerSign, playerName) => {
-    return {
-        playerSign,
-        playerName
+    const wins = 0;
+    const getSign = () => playerSign;
+    const getName = () => playerName;
+    const addWin = () => {
+        wins +=1;
+        // add update of displaying wins
     }
+    const getWin = () => wins;
+    return {getSign, getName, getWin, addWin}
 }
 
 const displayController = (() => {
-    let playerSign = "x";
+    let playerSign = "X";
+
+    let playerX = document.getElementById('playerX');
+    let playerO = document.getElementById('playerO');
+    let playerNames = document.getElementById('player-names')
+    playerNames.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (playerX.value == '' || playerO.value == '') {
+            alert('Please enter both of players names')
+        } else {
+            startRound();
+        }
+    })
+
+    const chosenSign = document.getElementById("choosing");
     const xPlayer = document.getElementById("xPlayer");
     const oPlayer = document.getElementById("oPlayer");
     const gameboard = document.getElementById("game-board");
-    const choosingSign = document.getElementById("choosing");
     // congratulating winner popup
-    const popup = document.getElementById("winnerPopup");
+    const popup = document.getElementById("winner-container");
+    const message  = document.getElementById("winner-message");
 
     // player mode switch
     function signSwitch(sign) {
@@ -120,13 +154,17 @@ const displayController = (() => {
 
     // enter round mode (can't alter signs;gameboard is active)
     function startRound() {
+        playerOne = playerFactory("X", playerX);
+        playerTwo = playerFactory("O", playerO);
+        playerSign = "X";
+        alert(`${playerSign}`);
         xPlayer.classList.remove("active");
         oPlayer.classList.remove("active");
         xPlayer.classList.add("inactive");
         oPlayer.classList.add("inactive");
         gameboard.classList.add("active");
         gameboard.classList.remove("inactive");
-        choosingSign.classList.add("hidden");
+        chosenSign.innerHTML= `${playerSign}'s turn`;
     }
 
     function stopRound() {
@@ -136,7 +174,7 @@ const displayController = (() => {
 
     xPlayer.addEventListener("click", function() {
         if (xPlayer.classList.contains("active")) {
-            signSwitch("x");
+            signSwitch("X");
             startRound();
         } else {
             alert("you can't change sign in the middle of the game");
@@ -145,7 +183,7 @@ const displayController = (() => {
 
     oPlayer.addEventListener("click", function() {
         if (oPlayer.classList.contains("active")) {
-            signSwitch("o");
+            signSwitch("O");
             startRound();
         }
         else {
@@ -155,6 +193,7 @@ const displayController = (() => {
 
     // restart game
     const restartBtn = document.getElementById("restart");
+    const newGame = document.getElementById("new-game");
 
     function restartGame() {
         Gameboard.resetBoard();
@@ -163,18 +202,30 @@ const displayController = (() => {
         oPlayer.classList.add("active");
         xPlayer.classList.remove("inactive");
         oPlayer.classList.remove("inactive");
-        choosingSign.classList.remove("hidden");
-        popup.classList.remove("show");
+        chosenSign.classList.remove("hidden");
+        popup.classList.add("hidden");
+        popup.classList.remove('visible');
+        chosenSign.innerHTML= `Choose a player`;
+        playerX.value = '';
+        playerO.value = '';
     }
 
     restartBtn.addEventListener("click", restartGame);
+    newGame.addEventListener("click", restartGame);
 
     function showPopup(winner) {
-        popup.innerHTML = `Congratulations! ${winner} wins!`;
-        popup.classList.add("show");
+        if (winner === "draw") {
+            message.innerHTML = `It's a draw!`;
+        } else {
+            message.innerHTML = `Congratulations, ${winner} wins!`;
+        }
+        popup.classList.remove("hidden");
+        popup.classList.add('visible');
+        chosenSign.innerHTML = '';
     };
     
     return {
+        chosenSign: chosenSign,
         signSwitch: signSwitch,
         playerSign: playerSign,
         stopRound: stopRound,
@@ -182,15 +233,31 @@ const displayController = (() => {
     }
 })();
 
+<<<<<<< HEAD
 // add styling to congratulations popup
 // add more styling to inactive elements
 // add new game button to congratulations button
 // disable sign choice after the winner has been declared
 
+=======
+>>>>>>> refs/remotes/origin/main
 // create players with names
-// const playerOne = playerFactory("x", nameX);
-// const playerTwo = playerFactory("o", nameO);
+// const playerOne = playerFactory("X", nameX);
+// const playerTwo = playerFactory("O", nameO);
+
+// add update of displaying wins
+// add to checkWin() checking player factory for number of wins
+
+// create form for names
+// ask to choose sign after the game has started (Player1 chooses X, then Player2 chooses O)
+// Submit button will be Start Game button
 
 // think about logic of multiple rounds
 // accumulating score inside created players
 
+// make Restart game button not active at the beginning
+// create stages : Sart a game -> enter both names -> choose sign -> Start first round -> show scoreboard -> other rounds -> show winner and scoreboard -> restart game button
+
+
+
+// Make AI palyer
