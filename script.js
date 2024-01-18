@@ -233,14 +233,11 @@ const displayController = (() => {
     }
 })();
 
-<<<<<<< HEAD
 // add styling to congratulations popup
 // add more styling to inactive elements
 // add new game button to congratulations button
 // disable sign choice after the winner has been declared
 
-=======
->>>>>>> refs/remotes/origin/main
 // create players with names
 // const playerOne = playerFactory("X", nameX);
 // const playerTwo = playerFactory("O", nameO);
