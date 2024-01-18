@@ -185,6 +185,7 @@ const displayController = (() => {
 // add styling to congratulations popup
 // add more styling to inactive elements
 // add new game button to congratulations button
+// disable sign choice after the winner has been declared
 
 // create players with names
 // const playerOne = playerFactory("x", nameX);
