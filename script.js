@@ -8,11 +8,10 @@ const Gameboard = (() => {
     function render() {
         gameBoardDiv.innerHTML = "";
         for (i=0;i<gameBoard.length;i++) {
-            let sign = gameBoard[i];
             let div = document.createElement("div");
             div.classList = "cell"
             div.id = `cell${i}`
-            div.innerHTML = sign;
+            div.innerHTML = gameBoard[i];
             gameBoardDiv.appendChild(div);
         }
     }
@@ -26,18 +25,19 @@ const Gameboard = (() => {
         } else {
             displayController.chosenSign.innerHTML= `X's turn`;
         }
+        // change sign of the player after every turn
+        (sign == "X") ? displayController.playerSign = "O" : displayController.playerSign = "X";
     }
 
     gameBoardDiv.addEventListener("click", function(event){
         if (gameBoardDiv.classList.contains("active")) {
-            countTurns += 1;
             if (event.target.innerHTML == "") {
+                countTurns += 1;
                 let cellID = event.target.getAttribute('id');
                 sign = displayController.playerSign;
+                alert(sign)
                 addMark(cellID, sign);
                 checkWin();
-                // change sign of the player after every turn
-                (displayController.playerSign == "X") ? displayController.playerSign = "O" : displayController.playerSign = "X";
             }
         } else {
             alert("choose your player's sign");
@@ -99,7 +99,7 @@ const Gameboard = (() => {
         }
         gameBoardDiv.classList.remove("active");
         countTurns = 0;
-        /*displayController.chosenSign.innerHTML = "";*/
+        // gameBoardDiv.classList.add("inactive");
         render();
     }
 
@@ -113,13 +113,10 @@ const Gameboard = (() => {
 })();
 
 const playerFactory = (playerSign, playerName) => {
-    const wins = 0;
+    let wins = 0;
     const getSign = () => playerSign;
     const getName = () => playerName;
-    const addWin = () => {
-        wins +=1;
-        // add update of displaying wins
-    }
+    const addWin = () => wins++;
     const getWin = () => wins;
     return {getSign, getName, getWin, addWin}
 }
@@ -133,7 +130,7 @@ const displayController = (() => {
     playerNames.addEventListener('submit', (e) => {
         e.preventDefault();
         if (playerX.value == '' || playerO.value == '') {
-            alert('Please enter both of players names')
+            alert('Please enter names of players')
         } else {
             startRound();
         }
@@ -146,6 +143,10 @@ const displayController = (() => {
     // congratulating winner popup
     const popup = document.getElementById("winner-container");
     const message  = document.getElementById("winner-message");
+    const startButton = document.getElementById("start-button");
+    const welcomeMsg = document.getElementById("welcome");
+
+    
 
     // player mode switch
     function signSwitch(sign) {
@@ -156,20 +157,24 @@ const displayController = (() => {
     function startRound() {
         playerOne = playerFactory("X", playerX);
         playerTwo = playerFactory("O", playerO);
-        playerSign = "X";
-        alert(`${playerSign}`);
+        displayController.playerSign = "X";
         xPlayer.classList.remove("active");
         oPlayer.classList.remove("active");
         xPlayer.classList.add("inactive");
         oPlayer.classList.add("inactive");
         gameboard.classList.add("active");
         gameboard.classList.remove("inactive");
-        chosenSign.innerHTML= `${playerSign}'s turn`;
+        startButton.classList.add("hidden");
+        restartBtn.classList.remove("hidden");
+        welcomeMsg.classList.add("hidden");
+        // should be player's name turn and sign is lightened
+        chosenSign.innerHTML= `${displayController.playerSign}'s turn`;
     }
 
     function stopRound() {
         gameboard.classList.remove("active");
         gameboard.classList.add("inactive");
+        restartBtn.classList.add("hidden");
     }
 
     xPlayer.addEventListener("click", function() {
@@ -194,10 +199,14 @@ const displayController = (() => {
     // restart game
     const restartBtn = document.getElementById("restart");
     const newGame = document.getElementById("new-game");
+    restartBtn.classList.add("hidden");
 
     function restartGame() {
+        // actions
         Gameboard.resetBoard();
         stopRound();
+        // visual elements
+        startButton.classList.remove("hidden");
         xPlayer.classList.add("active");
         oPlayer.classList.add("active");
         xPlayer.classList.remove("inactive");
@@ -205,6 +214,7 @@ const displayController = (() => {
         chosenSign.classList.remove("hidden");
         popup.classList.add("hidden");
         popup.classList.remove('visible');
+        welcomeMsg.classList.remove("hidden");
         chosenSign.innerHTML= `Choose a player`;
         playerX.value = '';
         playerO.value = '';
