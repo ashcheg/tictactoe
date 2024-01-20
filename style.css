@@ -80,7 +80,7 @@ button:hover {
 
 #xPlayer, #oPlayer {
     padding: 10px 10px 10px 10px;
-    font-size: 1.3em;
+    font-size: 2em;
 }
 
 .inactive > .cell  {
@@ -150,7 +150,9 @@ button.inactive {
     font-size: 50px;
 }
 
-
+h1 {
+    font-size: 1.3em;
+}
 
 
 

@@ -21,9 +21,11 @@ const Gameboard = (() => {
         gameBoard[cellNumber] = sign;
         render();
         if (sign === "X") {
-            displayController.chosenSign.innerHTML= `O's turn`;
+            oPlayer.classList.remove("hidden");
+            xPlayer.classList.add("hidden");
         } else {
-            displayController.chosenSign.innerHTML= `X's turn`;
+            xPlayer.classList.remove("hidden");
+            oPlayer.classList.add("hidden");
         }
         // change sign of the player after every turn
         (sign == "X") ? displayController.playerSign = "O" : displayController.playerSign = "X";
@@ -35,7 +37,6 @@ const Gameboard = (() => {
                 countTurns += 1;
                 let cellID = event.target.getAttribute('id');
                 sign = displayController.playerSign;
-                alert(sign)
                 addMark(cellID, sign);
                 checkWin();
             }
@@ -158,17 +159,12 @@ const displayController = (() => {
         playerOne = playerFactory("X", playerX);
         playerTwo = playerFactory("O", playerO);
         displayController.playerSign = "X";
-        xPlayer.classList.remove("active");
-        oPlayer.classList.remove("active");
-        xPlayer.classList.add("inactive");
-        oPlayer.classList.add("inactive");
+        xPlayer.classList.remove("hidden");
         gameboard.classList.add("active");
         gameboard.classList.remove("inactive");
         startButton.classList.add("hidden");
         restartBtn.classList.remove("hidden");
         welcomeMsg.classList.add("hidden");
-        // should be player's name turn and sign is lightened
-        chosenSign.innerHTML= `${displayController.playerSign}'s turn`;
     }
 
     function stopRound() {
@@ -207,15 +203,12 @@ const displayController = (() => {
         stopRound();
         // visual elements
         startButton.classList.remove("hidden");
-        xPlayer.classList.add("active");
-        oPlayer.classList.add("active");
-        xPlayer.classList.remove("inactive");
-        oPlayer.classList.remove("inactive");
+        xPlayer.classList.add("hidden");
+        oPlayer.classList.add("hidden");
         chosenSign.classList.remove("hidden");
         popup.classList.add("hidden");
         popup.classList.remove('visible');
         welcomeMsg.classList.remove("hidden");
-        chosenSign.innerHTML= `Choose a player`;
         playerX.value = '';
         playerO.value = '';
     }
