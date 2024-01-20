@@ -100,7 +100,6 @@ const Gameboard = (() => {
         }
         gameBoardDiv.classList.remove("active");
         countTurns = 0;
-        // gameBoardDiv.classList.add("inactive");
         render();
     }
 
@@ -205,7 +204,6 @@ const displayController = (() => {
         startButton.classList.remove("hidden");
         xPlayer.classList.add("hidden");
         oPlayer.classList.add("hidden");
-        chosenSign.classList.remove("hidden");
         popup.classList.add("hidden");
         popup.classList.remove('visible');
         welcomeMsg.classList.remove("hidden");
@@ -224,7 +222,6 @@ const displayController = (() => {
         }
         popup.classList.remove("hidden");
         popup.classList.add('visible');
-        chosenSign.innerHTML = '';
     };
     
     return {
