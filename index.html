@@ -15,16 +15,19 @@
             <button id="new-game">New Game</button>
         </div>
     </div>
-    <form action="" id="player-names">
-        <h1 id="welcome">Enter player names:</h1>
-        <input type="text" id="playerX" placeholder="name of player X">
-        <input type="text" id="playerO" placeholder="name of player O">
-        <button type="submit" id="start-button">Start Game</button>
-    </form>
-    <div class="players" id="choosing">
-        <div class="player-sign hidden" id="xPlayer">X's turn</div>
-        <div class="player-sign hidden" id="oPlayer">O's turn</div>
+    <div id="name-sign">
+        <form action="" id="player-names">
+            <h1 id="welcome">Enter player names:</h1>
+            <input type="text" id="playerX" placeholder="name of player X">
+            <input type="text" id="playerO" placeholder="name of player O">
+            <button type="submit" id="start-button">Start Game</button>
+        </form>
+        <div class="players" id="choosing">
+            <div class="player-sign hidden" id="xPlayer">X's turn</div>
+            <div class="player-sign hidden" id="oPlayer">O's turn</div>
+        </div>
     </div>
+    
     <div id="game-board" class="inactive">
     </div>
     <button id="restart">Restart Game</button>

@@ -165,6 +165,7 @@ const displayController = (() => {
         playerNames.classList.add("hidden");
         restartBtn.classList.remove("hidden");
         welcomeMsg.classList.add("hidden");
+        chosenSign.classList.remove("hidden");
     }
 
     function stopRound() {
@@ -224,6 +225,7 @@ const displayController = (() => {
         }
         popup.classList.remove("hidden");
         popup.classList.add('visible');
+        chosenSign.classList.add("hidden");
     };
     
     return {
