@@ -42,11 +42,27 @@ body {
     background-color: var(--secondary-color);
 }
 
-.players {
-    width: 450px;
-    display: grid;
+/* make divs inside .players completely overlap*/ 
+/* .players {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 10px;
-    grid-template-columns: 1fr 1fr;
+} */
+
+.players {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 400px;
+    height: 57px;
+}
+
+.players > div {
+    position: absolute;
 }
 
 h3 {
