@@ -51,6 +51,11 @@ body {
     width: 400px;
     height: 57px;
     pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.players.hidden {
+    opacity: 0;
 }
 
 .players > div {
@@ -67,6 +72,14 @@ body {
 
 #name-sign > div {
     position: absolute;
+}
+
+#player-names {
+    transition: opacity 0.5s ease;
+}
+
+#player-names.hidden {
+    opacity: 0;
 }
 
 h3 {

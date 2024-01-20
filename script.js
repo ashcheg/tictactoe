@@ -157,15 +157,15 @@ const displayController = (() => {
     function startRound() {
         playerOne = playerFactory("X", playerX);
         playerTwo = playerFactory("O", playerO);
+        chosenSign.classList.remove("hidden");
+        playerNames.classList.add("hidden");
         displayController.playerSign = "X";
         xPlayer.classList.remove("hidden");
         gameboard.classList.add("active");
         gameboard.classList.remove("inactive");
         startButton.classList.add("hidden");
-        playerNames.classList.add("hidden");
         restartBtn.classList.remove("hidden");
         welcomeMsg.classList.add("hidden");
-        chosenSign.classList.remove("hidden");
     }
 
     function stopRound() {
@@ -199,6 +199,7 @@ const displayController = (() => {
     restartBtn.classList.add("hidden");
 
     function restartGame() {
+        
         // actions
         Gameboard.resetBoard();
         stopRound();
@@ -209,6 +210,7 @@ const displayController = (() => {
         popup.classList.add("hidden");
         popup.classList.remove('visible');
         welcomeMsg.classList.remove("hidden");
+        chosenSign.classList.add("hidden");
         playerNames.classList.remove("hidden");
         playerX.value = '';
         playerO.value = '';
