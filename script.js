@@ -162,6 +162,7 @@ const displayController = (() => {
         gameboard.classList.add("active");
         gameboard.classList.remove("inactive");
         startButton.classList.add("hidden");
+        playerNames.classList.add("hidden");
         restartBtn.classList.remove("hidden");
         welcomeMsg.classList.add("hidden");
     }
@@ -172,16 +173,16 @@ const displayController = (() => {
         restartBtn.classList.add("hidden");
     }
 
-    xPlayer.addEventListener("click", function() {
+    /* xPlayer.addEventListener("click", function() {
         if (xPlayer.classList.contains("active")) {
             signSwitch("X");
             startRound();
         } else {
             alert("you can't change sign in the middle of the game");
         }
-    });
+    }); */
 
-    oPlayer.addEventListener("click", function() {
+    /* oPlayer.addEventListener("click", function() {
         if (oPlayer.classList.contains("active")) {
             signSwitch("O");
             startRound();
@@ -189,7 +190,7 @@ const displayController = (() => {
         else {
             alert("you can't change sign in the middle of the game");
         }
-    });
+    }); */
 
     // restart game
     const restartBtn = document.getElementById("restart");
@@ -207,6 +208,7 @@ const displayController = (() => {
         popup.classList.add("hidden");
         popup.classList.remove('visible');
         welcomeMsg.classList.remove("hidden");
+        playerNames.classList.remove("hidden");
         playerX.value = '';
         playerO.value = '';
     }
@@ -235,26 +237,16 @@ const displayController = (() => {
 
 // add styling to congratulations popup
 // add more styling to inactive elements
-// add new game button to congratulations button
-// disable sign choice after the winner has been declared
 
 // create players with names
 // const playerOne = playerFactory("X", nameX);
 // const playerTwo = playerFactory("O", nameO);
 
-// add update of displaying wins
-// add to checkWin() checking player factory for number of wins
-
-// create form for names
-// ask to choose sign after the game has started (Player1 chooses X, then Player2 chooses O)
-// Submit button will be Start Game button
-
 // think about logic of multiple rounds
 // accumulating score inside created players
 
-// make Restart game button not active at the beginning
-// create stages : Sart a game -> enter both names -> choose sign -> Start first round -> show scoreboard -> other rounds -> show winner and scoreboard -> restart game button
+// create stages : Sart a game -> enter both names -> Start first round -> show scoreboard -> other rounds -> show winner and scoreboard -> restart game button
 
-
+// see if signSwitch function still needed
 
 // Make AI palyer
