@@ -146,6 +146,7 @@ const displayController = (() => {
     const startButton = document.getElementById("start-button");
     const welcomeMsg = document.getElementById("welcome");
     const overlay = document.getElementById("overlay");
+    const firstPopup = document.getElementById("first-popup");
 
     
 
@@ -168,12 +169,14 @@ const displayController = (() => {
         restartBtn.classList.remove("hidden");
         welcomeMsg.classList.add("hidden");
         overlay.classList.add("round");
+        firstPopup.classList.add("round");
     }
 
     function stopRound() {
         gameboard.classList.remove("active");
         gameboard.classList.add("inactive");
         restartBtn.classList.add("hidden");
+        firstPopup.classList.remove("round");
     }
 
     /* xPlayer.addEventListener("click", function() {

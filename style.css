@@ -49,13 +49,15 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
-    width: 400px;
+    width: 380px;
     height: 57px;
     pointer-events: none;
+    opacity: 1;
     transition: opacity 0.5s ease;
 }
 
 .players.hidden {
+    display: none;
     opacity: 0;
 }
 
@@ -72,7 +74,7 @@ body {
 }
 
 #name-sign > div {
-    position: absolute;
+    /* position: absolute; */
 }
 
 #player-names {
@@ -85,7 +87,7 @@ body {
 
 
 #player-names.hidden {
-    opacity: 0;
+    display: none;
 }
 
 button {
@@ -201,16 +203,21 @@ h1 {
     align-items: center;
     justify-content: center;
     padding: 30px 40px 30px 40px;
-    height: 200px;
     width: 380px;
-    background-color: var(--cell-color);
-    border-radius: 10px;
+    color: var(--text-color);
+    background-color: var(--cell-color-inactive);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
 
+#first-popup.round {
+    background-color: white;
+    box-shadow: none;
 }
 
 #overlay {
     position: fixed;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.6);
     top: 0;
     bottom: 0;
     left: 0;
@@ -218,7 +225,9 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
+    padding-top: 20px;
+    transition: opacity 0.3s ease;
     /* transition: opacity 500ms; */
     /* visibility: hidden; */
     /* opacity: 0; */
@@ -226,7 +235,8 @@ h1 {
 
 #overlay.round {
     position: static;
-    background:rgba(0, 0, 0, 0.1);
+    background:white;
+    padding: 0px;
 }
 
 .transparent {
