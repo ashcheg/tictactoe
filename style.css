@@ -186,15 +186,6 @@ h1 {
     margin: 5px 0;
 }
 
-/* #first-popup {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    opacity: 1;
-    transition: opacity 0.3s ease;
-} */
-
 #first-popup {
     opacity: 1;
     transition: opacity 0.3s ease;
@@ -213,4 +204,14 @@ h1 {
     background-color: rgba(var(--cell-color), var(--opacity));
 }
 
+#first-popup.round-started {
+    position: static;
+    min-height: 150px;
+    height: 150px;
+    width: 450px;
+}
+
+.transparent {
+    opacity: 0;
+}
 

@@ -145,6 +145,7 @@ const displayController = (() => {
     const message  = document.getElementById("winner-message");
     const startButton = document.getElementById("start-button");
     const welcomeMsg = document.getElementById("welcome");
+    const firstPopoup = document.getElementById("first-popup");
 
     
 
@@ -166,6 +167,7 @@ const displayController = (() => {
         startButton.classList.add("hidden");
         restartBtn.classList.remove("hidden");
         welcomeMsg.classList.add("hidden");
+        firstPopoup.classList.add("round-started");
     }
 
     function stopRound() {
@@ -212,6 +214,7 @@ const displayController = (() => {
         welcomeMsg.classList.remove("hidden");
         chosenSign.classList.add("hidden");
         playerNames.classList.remove("hidden");
+        firstPopoup.classList.add("round-started");
         playerX.value = '';
         playerO.value = '';
     }
