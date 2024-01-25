@@ -132,6 +132,7 @@ const displayController = (() => {
         if (playerX.value == '' || playerO.value == '') {
             alert('Please enter names of players')
         } else {
+            overlay.classList.add("transparent");
             startRound();
         }
     })
@@ -165,9 +166,12 @@ const displayController = (() => {
         xPlayer.classList.remove("hidden");
         gameboard.classList.add("active");
         gameboard.classList.remove("inactive");
+        gameboard.classList.remove("hidden");
         startButton.classList.add("hidden");
         restartBtn.classList.remove("hidden");
         welcomeMsg.classList.add("hidden");
+        firstPopup.classList.remove("transparent");
+        overlay.classList.remove("transparent");
         overlay.classList.add("round");
         firstPopup.classList.add("round");
     }
@@ -177,6 +181,7 @@ const displayController = (() => {
         gameboard.classList.add("inactive");
         restartBtn.classList.add("hidden");
         firstPopup.classList.remove("round");
+        playerNames.classList.add("transparent");
     }
 
     /* xPlayer.addEventListener("click", function() {
@@ -217,6 +222,7 @@ const displayController = (() => {
         welcomeMsg.classList.remove("hidden");
         chosenSign.classList.add("hidden");
         playerNames.classList.remove("hidden");
+        playerNames.classList.remove("transparent");
         overlay.classList.remove("round");
         playerX.value = '';
         playerO.value = '';
