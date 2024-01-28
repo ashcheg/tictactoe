@@ -251,8 +251,7 @@ const displayController = (() => {
     }
 })();
 
-// add styling to congratulations popup
-// add more styling to inactive elements
+// make gameboard visible in the background of first popup
 
 // create players with names
 // const playerOne = playerFactory("X", nameX);
